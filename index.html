@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>ConGlobal Employment</title>
+
+    <style>
+        body {
+            margin: 0;
+            font-family: 'Segoe UI', Arial;
+            background: #eef2f7;
+        }
+
+        header {
+            background: linear-gradient(90deg, #003366, #0055a5);
+            color: white;
+            padding: 20px;
+            text-align: center;
+            font-size: 26px;
+            font-weight: bold;
+            letter-spacing: 1px;
+        }
+
+        .container {
+            width: 420px;
+            margin: 60px auto;
+            background: white;
+            padding: 30px;
+            border-radius: 12px;
+            box-shadow: 0 10px 25px rgba(0,0,0,0.1);
+        }
+
+        h2 {
+            text-align: center;
+            margin-bottom: 20px;
+            color: #003366;
+        }
+
+        input, select {
+            width: 100%;
+            padding: 12px;
+            margin: 12px 0;
+            border: 1px solid #ccc;
+            border-radius: 6px;
+            font-size: 14px;
+        }
+
+        input:focus, select:focus {
+            border-color: #0055a5;
+            outline: none;
+        }
+
+        button {
+            width: 100%;
+            padding: 14px;
+            background: #003366;
+            color: white;
+            border: none;
+            border-radius: 6px;
+            font-size: 16px;
+            cursor: pointer;
+            transition: 0.3s;
+        }
+
+        button:hover {
+            background: #0055a5;
+        }
+
+        .footer {
+            text-align: center;
+            margin-top: 20px;
+            font-size: 12px;
+            color: gray;
+        }
+    </style>
+</head>
+
+<body>
+
+<header>
+    ConGlobal Employment Portal
+</header>
+
+<div class="container">
+    <h2>Apply for a Position</h2>
+
+    <form action="/apply" method="POST" enctype="multipart/form-data">
+        <input type="text" name="name" placeholder="Full Name" required>
+        <input type="email" name="email" placeholder="Email Address" required>
+
+        <select name="position">
+            <option>Equipment Operator</option>
+            <option>Warehouse Worker</option>
+            <option>Truck Driver</option>
+            <option>Logistics Coordinator</option>
+        </select>
+
+        <input type="file" name="resume" required>
+
+        <button type="submit">Submit Application</button>
+    </form>
+
+    <div class="footer">
+        © 2026 ConGlobal Employment
+    </div>
+</div>
+
+</body>
+</html>
