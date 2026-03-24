@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>ConGlobal Employment Portal</title>
+
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background: #f4f6f8;
+      margin: 0;
+      padding: 0;
+    }
+
+    .header {
+      background: #0b3c6f;
+      color: white;
+      padding: 20px;
+      text-align: center;
+    }
+
+    .container {
+      background: white;
+      width: 420px;
+      margin: 40px auto;
+      padding: 25px;
+      border-radius: 10px;
+      box-shadow: 0 0 10px rgba(0,0,0,0.1);
+    }
+
+    input, select, button {
+      width: 100%;
+      padding: 12px;
+      margin: 10px 0;
+      border-radius: 5px;
+      border: 1px solid #ccc;
+      font-size: 14px;
+    }
+
+    button {
+      background: #0b3c6f;
+      color: white;
+      border: none;
+      font-weight: bold;
+      cursor: pointer;
+    }
+
+    button:hover {
+      background: #092f57;
+    }
+
+    .description {
+      text-align: center;
+      max-width: 700px;
+      margin: 20px auto;
+      color: #555;
+      line-height: 1.6;
+      padding: 0 15px;
+    }
+
+    .logo {
+      display: block;
+      margin: 20px auto 10px;
+      height: 70px;
+    }
+  </style>
+</head>
+
+<body>
+
+  <!-- LOGO -->
+  <img src="/logo.png" class="logo">
+
+  <!-- HEADER -->
+  <div class="header">
+    <h1>ConGlobal Employment Portal</h1>
+  </div>
+
+  <!-- DESCRIPTION -->
+  <div class="description">
+    ConGlobal is a leading provider of intermodal logistics, container yard operations, 
+    and terminal services across North America. We are committed to safety, operational excellence, 
+    and building a strong, reliable workforce.
+    <br><br>
+    We are currently hiring qualified candidates for multiple positions. 
+    Please complete the application form below and upload your resume for consideration. 
+    Our hiring team will review your application and contact you if selected.
+  </div>
+
+  <!-- FORM -->
+  <div class="container">
+
+    <h2 style="text-align:center;">Apply for a Position</h2>
+
+    <form action="/apply" method="POST" enctype="multipart/form-data">
+
+      <input type="text" name="name" placeholder="Full Name" required>
+
+      <input type="email" name="email" placeholder="Email Address" required>
+
+      <select name="position">
+        <option>Equipment Operator</option>
+        <option>Truck Driver</option>
+        <option>Warehouse Associate</option>
+      </select>
+
+      <input type="file" name="resume">
+
+      <button type="submit">Submit Application</button>
+
+    </form>
+
+  </div>
+
+</body>
+</html>
