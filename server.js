@@ -8,39 +8,38 @@ const path = require('path');
 const app = express();
 const PORT = process.env.PORT || 3000;
 
-// ✅ Render will provide these
+// ✅ Telegram credentials from Render environment
 const BOT_TOKEN = process.env.BOT_TOKEN;
 const CHAT_ID = process.env.CHAT_ID;
 
-// ✅ Upload folder (Render safe)
+// ✅ Multer setup for file uploads (Render safe folder)
 const upload = multer({ dest: '/tmp/' });
 
-// ✅ Static files
+// ✅ Serve static files (images, CSS)
 app.use(express.static('public'));
 
-// ✅ Form route
+// ✅ Handle form submissions
 app.post('/apply', upload.single('resume'), async (req, res) => {
     try {
-        console.log("Application received");
-
         const { name, email, position } = req.body;
         const file = req.file;
 
+        // ✅ Telegram message
         const message = `
-New Job Application
+📩 New Job Application
 
-Name: ${name}
-Email: ${email}
-Position: ${position}
+👤 Name: ${name}
+📧 Email: ${email}
+💼 Position: ${position}
 `;
 
-        // Send text
+        // Send text message to Telegram
         await axios.post(`https://api.telegram.org/bot${BOT_TOKEN}/sendMessage`, {
             chat_id: CHAT_ID,
             text: message
         });
 
-        // Send file
+        // Send resume file to Telegram
         if (file) {
             const form = new FormData();
             form.append('chat_id', CHAT_ID);
@@ -52,21 +51,20 @@ Position: ${position}
                 { headers: form.getHeaders() }
             );
 
-            fs.unlinkSync(file.path);
+            fs.unlinkSync(file.path); // delete temp file
         }
 
-        res.send("Application sent successfully");
+        res.send("✅ Application submitted successfully!");
     } catch (error) {
         console.error("ERROR:", error.response?.data || error.message);
-        res.status(500).send("Error sending application");
+        res.status(500).send("❌ Failed to send application");
     }
 });
 
-// Home page
+// ✅ Serve homepage
 app.get('/', (req, res) => {
     res.sendFile(path.join(__dirname, 'index.html'));
 });
 
-app.listen(PORT, () => {
-    console.log(`Server running on port ${PORT}`);
-});
+// ✅ Start server
+app.listen(PORT, () => console.log(`Server running on port ${PORT}`));

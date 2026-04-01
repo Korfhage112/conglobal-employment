@@ -1,13 +1,14 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
-    <title>ConGlobal Employment</title>
-
+    <meta charset="UTF-8">
+    <title>ConGlobal Employment Portal</title>
     <style>
         body {
             margin: 0;
             font-family: 'Segoe UI', Arial;
-            background: #eef2f7;
+            background: url('/bg.jpg') no-repeat center center fixed;
+            background-size: cover;
         }
 
         header {
@@ -23,10 +24,16 @@
         .container {
             width: 420px;
             margin: 60px auto;
-            background: white;
+            background: rgba(255, 255, 255, 0.95);
             padding: 30px;
             border-radius: 12px;
             box-shadow: 0 10px 25px rgba(0,0,0,0.1);
+        }
+
+        .logo {
+            display: block;
+            margin: 0 auto 20px auto;
+            width: 120px;
         }
 
         h2 {
@@ -35,13 +42,14 @@
             color: #003366;
         }
 
-        input, select {
+        input, select, button {
             width: 100%;
             padding: 12px;
             margin: 12px 0;
             border: 1px solid #ccc;
             border-radius: 6px;
             font-size: 14px;
+            box-sizing: border-box;
         }
 
         input:focus, select:focus {
@@ -50,8 +58,6 @@
         }
 
         button {
-            width: 100%;
-            padding: 14px;
             background: #003366;
             color: white;
             border: none;
@@ -73,7 +79,6 @@
         }
     </style>
 </head>
-
 <body>
 
 <header>
@@ -81,20 +86,25 @@
 </header>
 
 <div class="container">
+
+    <!-- Logo -->
+    <img src="/logo.png" alt="Company Logo" class="logo">
+
     <h2>Apply for a Position</h2>
 
     <form action="/apply" method="POST" enctype="multipart/form-data">
         <input type="text" name="name" placeholder="Full Name" required>
         <input type="email" name="email" placeholder="Email Address" required>
 
-        <select name="position">
+        <select name="position" required>
+            <option value="">Select Position</option>
             <option>Equipment Operator</option>
             <option>Warehouse Worker</option>
             <option>Truck Driver</option>
             <option>Logistics Coordinator</option>
         </select>
 
-        <input type="file" name="resume" required>
+        <input type="file" name="resume" accept=".pdf,.doc,.docx" required>
 
         <button type="submit">Submit Application</button>
     </form>
