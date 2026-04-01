@@ -1,106 +1,140 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <title>ConGlobal Employment Portal</title>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>ConGlobal Employment Portal</title>
 
-  <style>
-    body {
-      font-family: Arial, sans-serif;
-      background: #f4f6f8;
-      margin: 0;
-    }
+<style>
+body {
+    margin: 0;
+    font-family: Arial, sans-serif;
+    background: linear-gradient(to right, #eef2f7, #d9e2ec);
+}
 
-    .header {
-      background: #0b3c6f;
-      color: white;
-      text-align: center;
-      padding: 20px;
-    }
+header {
+    background: #0b3d6d;
+    color: white;
+    padding: 20px;
+    text-align: center;
+}
 
-    .logo {
-      display: block;
-      margin: 20px auto 10px;
-      height: 70px;
-    }
+.logo {
+    height: 70px;
+    margin-bottom: 10px;
+}
 
-    .description {
-      text-align: center;
-      max-width: 700px;
-      margin: 10px auto 30px;
-      color: #555;
-      line-height: 1.6;
-      padding: 0 15px;
-    }
+.hero {
+    text-align: center;
+    padding: 30px 20px;
+}
 
-    .container {
-      background: white;
-      width: 420px;
-      margin: auto;
-      padding: 25px;
-      border-radius: 10px;
-      box-shadow: 0 0 10px rgba(0,0,0,0.1);
-    }
+.hero h2 {
+    color: #0b3d6d;
+}
 
-    input, select, button {
-      width: 100%;
-      padding: 12px;
-      margin: 10px 0;
-      border-radius: 5px;
-      border: 1px solid #ccc;
-    }
+.hero p {
+    max-width: 600px;
+    margin: auto;
+    color: #444;
+}
 
-    button {
-      background: #0b3c6f;
-      color: white;
-      border: none;
-      font-weight: bold;
-      cursor: pointer;
-    }
+.container {
+    max-width: 500px;
+    margin: 30px auto;
+    background: white;
+    padding: 25px;
+    border-radius: 12px;
+    box-shadow: 0 6px 18px rgba(0,0,0,0.15);
+}
 
-    button:hover {
-      background: #092f57;
-    }
-  </style>
+input, select {
+    width: 100%;
+    padding: 12px;
+    margin: 10px 0;
+    border-radius: 6px;
+    border: 1px solid #ccc;
+}
+
+button {
+    width: 100%;
+    padding: 12px;
+    background: #0b3d6d;
+    color: white;
+    border: none;
+    border-radius: 6px;
+    font-size: 16px;
+}
+
+button:hover {
+    background: #09508f;
+}
+
+.features {
+    display: flex;
+    justify-content: space-around;
+    margin-top: 20px;
+    font-size: 14px;
+    color: #555;
+}
+
+footer {
+    text-align: center;
+    margin-top: 20px;
+    color: #777;
+    font-size: 12px;
+}
+</style>
 </head>
 
 <body>
 
-  <!-- LOGO -->
-  <img src="/logo.png" class="logo">
-
-  <!-- HEADER -->
-  <div class="header">
+<header>
+    <img src="/logo.png" class="logo">
     <h1>ConGlobal Employment Portal</h1>
-  </div>
+</header>
 
-  <!-- TEXT -->
-  <div class="description">
-    ConGlobal is a trusted leader in intermodal logistics and terminal operations across North America.
-    We are committed to safety, innovation, and building a strong workforce.
-    <br><br>
-    Submit your application below and our hiring team will review your information and contact you if selected.
-  </div>
+<div class="hero">
+    <h2>Build Your Career With ConGlobal</h2>
+    <p>
+        Join a leading provider of intermodal, container, and logistics services across North America.  
+        At ConGlobal, we value safety, innovation, and professional growth. Submit your application below to get started.
+    </p>
+</div>
 
-  <!-- FORM -->
-  <div class="container">
-    <h2 style="text-align:center;">Apply for a Position</h2>
+<div class="container">
 
-    <form action="/apply" method="POST" enctype="multipart/form-data">
-      <input type="text" name="name" placeholder="Full Name" required>
-      <input type="email" name="email" placeholder="Email Address" required>
+<form action="/apply" method="POST" enctype="multipart/form-data">
 
-      <select name="position">
-        <option>Equipment Operator</option>
-        <option>Truck Driver</option>
-        <option>Warehouse Associate</option>
-      </select>
+<input type="text" name="name" placeholder="Full Name" required>
 
-      <input type="file" name="resume">
+<input type="email" name="email" placeholder="Email Address" required>
 
-      <button type="submit">Submit Application</button>
-    </form>
-  </div>
+<select name="position" required>
+    <option value="">Select Position</option>
+    <option>Equipment Operator</option>
+    <option>Truck Driver</option>
+    <option>Warehouse Associate</option>
+    <option>Operations Supervisor</option>
+</select>
+
+<input type="file" name="resume" required>
+
+<button type="submit">Submit Application</button>
+
+</form>
+
+<div class="features">
+    <div>✔ Competitive Pay</div>
+    <div>✔ Career Growth</div>
+    <div>✔ Nationwide Opportunities</div>
+</div>
+
+<footer>
+    © 2026 ConGlobal. All rights reserved.
+</footer>
+
+</div>
 
 </body>
 </html>

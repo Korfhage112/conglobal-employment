@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Apply</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+  <div class="container">
+    <img src="/logo.png" class="logo">
+
+    <h2>Apply for a Position</h2>
+
+    <form action="/apply" method="POST" enctype="multipart/form-data">
+      
+      <input type="text" name="name" placeholder="Full Name" required>
+
+      <input type="email" name="email" placeholder="Email Address" required>
+
+      <input type="text" name="phone" placeholder="Phone Number" required>
+
+      <select name="position" required>
+        <option value="">Select Position</option>
+        <option>Frontend Developer</option>
+        <option>Backend Developer</option>
+        <option>Designer</option>
+      </select>
+
+      <input type="file" name="cv" accept=".pdf" required>
+
+      <button type="submit">Submit Application</button>
+
+    </form>
+  </div>
+
+</body>
+</html>

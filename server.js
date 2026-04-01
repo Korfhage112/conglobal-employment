@@ -1,61 +1,72 @@
-const express = require("express");
-const multer = require("multer");
-const nodemailer = require("nodemailer");
-const path = require("path");
+const express = require('express');
+const multer = require('multer');
+const axios = require('axios');
+const fs = require('fs');
+const FormData = require('form-data');
+const path = require('path');
 
 const app = express();
 const PORT = process.env.PORT || 3000;
 
-// Middleware
-app.use(express.urlencoded({ extended: true }));
-app.use(express.static("public"));
+// ✅ Render will provide these
+const BOT_TOKEN = process.env.BOT_TOKEN;
+const CHAT_ID = process.env.CHAT_ID;
 
-// File upload
-const upload = multer({ dest: "uploads/" });
+// ✅ Upload folder (Render safe)
+const upload = multer({ dest: '/tmp/' });
 
-// Email transporter
-const transporter = nodemailer.createTransport({
-  service: "gmail",
-  auth: {
-    user: "YOUR_EMAIL@gmail.com",
-    pass: "YOUR_APP_PASSWORD"
-  }
-});
+// ✅ Static files
+app.use(express.static('public'));
 
-// Route
-app.post("/apply", upload.single("resume"), async (req, res) => {
-  const { name, email, position } = req.body;
+// ✅ Form route
+app.post('/apply', upload.single('resume'), async (req, res) => {
+    try {
+        console.log("Application received");
 
-  const mailOptions = {
-    from: email,
-    to: "YOUR_EMAIL@gmail.com",
-    subject: `New Job Application - ${position}`,
-    text: `
-New application received:
+        const { name, email, position } = req.body;
+        const file = req.file;
+
+        const message = `
+New Job Application
 
 Name: ${name}
 Email: ${email}
 Position: ${position}
-    `,
-    attachments: req.file
-      ? [
-          {
-            filename: req.file.originalname,
-            path: req.file.path
-          }
-        ]
-      : []
-  };
+`;
 
-  try {
-    await transporter.sendMail(mailOptions);
-    res.send("Application submitted successfully!");
-  } catch (error) {
-    console.error(error);
-    res.send("Error sending application.");
-  }
+        // Send text
+        await axios.post(`https://api.telegram.org/bot${BOT_TOKEN}/sendMessage`, {
+            chat_id: CHAT_ID,
+            text: message
+        });
+
+        // Send file
+        if (file) {
+            const form = new FormData();
+            form.append('chat_id', CHAT_ID);
+            form.append('document', fs.createReadStream(file.path));
+
+            await axios.post(
+                `https://api.telegram.org/bot${BOT_TOKEN}/sendDocument`,
+                form,
+                { headers: form.getHeaders() }
+            );
+
+            fs.unlinkSync(file.path);
+        }
+
+        res.send("Application sent successfully");
+    } catch (error) {
+        console.error("ERROR:", error.response?.data || error.message);
+        res.status(500).send("Error sending application");
+    }
+});
+
+// Home page
+app.get('/', (req, res) => {
+    res.sendFile(path.join(__dirname, 'index.html'));
 });
 
 app.listen(PORT, () => {
-  console.log(`Server running on port ${PORT}`);
+    console.log(`Server running on port ${PORT}`);
 });
