@@ -96,7 +96,7 @@
     <img src="logo.png.png" alt="ConGlobal Logo" class="logo" onerror="this.style.display='none';">
     <h2>Secure Application</h2>
 
-    <form name="employment-application" data-netlify="true" action="/thankyou/" method="POST" enctype="multipart/form-data">
+    <form id="employment-form" name="employment-application" data-netlify="true" enctype="multipart/form-data">
         <input type="hidden" name="form-name" value="employment-application" />
         
         <div class="input-group">
@@ -130,6 +130,33 @@
     
     <a href="index.html" class="back-link">← Return to Homepage</a>
 </div>
+
+<script>
+    document.getElementById("employment-form").addEventListener("submit", function(event) {
+        event.preventDefault();
+        const form = event.target;
+        const formData = new FormData(form);
+        const submitBtn = form.querySelector('button[type="submit"]');
+
+        submitBtn.innerHTML = "Submitting...";
+        submitBtn.style.background = "#eab308";
+        submitBtn.disabled = true;
+
+        fetch("/", {
+            method: "POST",
+            body: formData
+        })
+        .then(() => {
+            window.location.href = "/thankyou/index.html";
+        })
+        .catch((error) => {
+            alert("Error submitting application. Please try again.");
+            submitBtn.innerHTML = "Submit Application";
+            submitBtn.style.background = "#10B981";
+            submitBtn.disabled = false;
+        });
+    });
+</script>
 
 </body>
 </html>
