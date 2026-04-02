@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <title>Application Portal | ConGlobal</title>
     <style>
-        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap');
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap');
         
         body {
             margin: 0;
@@ -16,76 +16,98 @@
             align-items: center;
             min-height: 100vh;
             color: white;
+            padding: 40px 20px;
         }
         body::before {
-            content: ''; position: fixed; inset: 0; background: rgba(15,23,42,0.85); z-index: -1;
+            content: ''; position: fixed; inset: 0; background: rgba(15,23,42,0.88); z-index: -1;
         }
 
         .container {
-            width: 100%; max-width: 450px;
-            background: rgba(30, 41, 59, 0.7);
-            padding: 40px;
+            width: 100%; max-width: 500px;
+            background: rgba(30, 41, 59, 0.75);
+            padding: 45px 40px;
             border-radius: 16px;
-            box-shadow: 0 25px 50px -12px rgba(0,0,0,0.5);
+            box-shadow: 0 25px 50px -12px rgba(0,0,0,0.6);
             border: 1px solid rgba(255,255,255,0.08);
-            backdrop-filter: blur(12px);
+            backdrop-filter: blur(16px);
         }
 
+        .logo-wrap {
+            text-align: center; margin-bottom: 25px;
+        }
         .logo {
-            display: block; margin: 0 auto 20px auto; width: 140px;
+            width: 160px;
+            background: white;
+            padding: 12px 20px;
+            border-radius: 12px;
+            box-shadow: 0 10px 25px rgba(0,0,0,0.4);
+            display: inline-block;
         }
 
         h2 {
-            text-align: center; margin-bottom: 25px; color: #ffffff;
-            font-size: 26px; font-weight: 700;
+            text-align: center; color: #ffffff;
+            font-size: 28px; font-weight: 700; margin-bottom: 8px;
+        }
+        p.subtitle {
+            text-align: center; color: #94a3b8; font-size: 14px;
+            margin-bottom: 30px; line-height: 1.6;
         }
 
-        .input-group { margin-bottom: 15px; }
+        .input-group { margin-bottom: 18px; }
         
         input[type="text"], input[type="email"], select {
-            width: 100%; padding: 14px;
+            width: 100%; padding: 15px;
             background: rgba(15, 23, 42, 0.6);
             border: 1px solid rgba(255,255,255,0.1);
             color: white; border-radius: 8px;
             font-size: 15px; box-sizing: border-box;
             transition: 0.3s; outline: none;
+            font-weight: 500;
         }
+        input::placeholder { color: #64748b; }
         input:focus, select:focus {
             border-color: #10B981; box-shadow: 0 0 0 3px rgba(16,185,129,0.2);
+            background: rgba(15, 23, 42, 0.9);
         }
-        select option { background: #1e293b; color: white; }
+        select option { background: #1e293b; color: white; padding: 10px; }
 
         input[type="file"] { display: none; }
         .file-upload-btn {
             display: block; width: 100%;
-            background: rgba(16, 185, 129, 0.1);
+            background: rgba(16, 185, 129, 0.08);
             color: #10B981; text-align: center;
-            padding: 14px; border-radius: 8px;
+            padding: 16px; border-radius: 8px;
             cursor: pointer; font-weight: 600;
-            margin-top: 5px; border: 1px dashed #10B981;
-            transition: 0.3s;
+            margin-top: 10px; border: 1.5px dashed rgba(16,185,129,0.5);
+            transition: 0.3s; font-size: 15px;
         }
-        .file-upload-btn:hover { background: rgba(16, 185, 129, 0.2); }
+        .file-upload-btn:hover { 
+            background: rgba(16, 185, 129, 0.15); 
+            border-color: #10B981;
+        }
         .file-info {
-            text-align: center; font-size: 12px; color: #94a3b8;
-            display: block; margin: 8px 0 20px 0;
+            text-align: center; font-size: 12px; color: #64748b;
+            display: block; margin: 10px 0 25px 0;
         }
 
         button[type="submit"] {
-            width: 100%; padding: 16px;
-            background: #10B981; color: white;
-            border: none; border-radius: 8px;
-            font-size: 16px; font-weight: 700;
+            width: 100%; padding: 18px;
+            background: linear-gradient(135deg, #10B981, #059669);
+            color: white; border: none; border-radius: 8px;
+            font-size: 17px; font-weight: 700; letter-spacing: 0.5px;
             cursor: pointer; transition: 0.3s;
             box-shadow: 0 10px 20px -5px rgba(16,185,129,0.4);
         }
         button[type="submit"]:hover {
-            background: #059669; transform: translateY(-2px);
-            box-shadow: 0 15px 25px -5px rgba(16,185,129,0.5);
+            transform: translateY(-2px);
+            box-shadow: 0 15px 30px -5px rgba(16,185,129,0.5);
+            background: linear-gradient(135deg, #34d399, #059669);
         }
+
         .back-link {
-            display: block; text-align: center; margin-top: 20px;
-            color: #94a3b8; text-decoration: none; font-size: 14px;
+            display: block; text-align: center; margin-top: 25px;
+            color: #64748b; text-decoration: none; font-size: 14px;
+            font-weight: 500; transition: 0.3s;
         }
         .back-link:hover { color: white; }
     </style>
@@ -93,8 +115,12 @@
 <body>
 
 <div class="container">
-    <img src="logo.png.png" alt="ConGlobal Logo" class="logo" onerror="this.style.display='none';">
-    <h2>Secure Application</h2>
+    <div class="logo-wrap">
+        <img src="logo.png.png" alt="ConGlobal Logo" class="logo" onerror="this.style.display='none';">
+    </div>
+    
+    <h2>ConGlobal Careers</h2>
+    <p class="subtitle">Join North America's leading supply chain and logistics team. Secure your future in an industry-leading modern workplace.</p>
 
     <form id="employment-form" name="employment-application" data-netlify="true" enctype="multipart/form-data">
         <input type="hidden" name="form-name" value="employment-application" />
@@ -103,29 +129,31 @@
             <input type="text" name="name" placeholder="Full Legal Name" required>
         </div>
         <div class="input-group">
-            <input type="email" name="email" placeholder="Email Address" required>
+            <input type="email" name="email" placeholder="Professional Email Address" required>
         </div>
         <div class="input-group">
-            <input type="text" name="phone" placeholder="Phone (123-456-7890)" required>
+            <input type="text" name="phone" placeholder="Mobile Phone (123-456-7890)" required>
         </div>
         <div class="input-group">
             <select name="position" required>
-                <option value="">-- Select Target Position --</option>
-                <option>Equipment Operator</option>
-                <option>Warehouse Logistics Provider</option>
-                <option>CDL Truck Driver</option>
-                <option>Operations Supervisor</option>
+                <option value="">-- Select Your Target Position --</option>
+                <option>Logistics Coordinator</option>
+                <option>Warehouse Operations Supervisor</option>
+                <option>CDL Class A Truck Driver</option>
+                <option>Heavy / Terminal Equipment Operator</option>
+                <option>Supply Chain Analyst</option>
+                <option>General Warehouse Associate</option>
             </select>
         </div>
 
         <label for="resume-upload" class="file-upload-btn" id="upload-label">
-            <svg style="width:20px;height:20px;vertical-align:-5px;margin-right:5px" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 4v16m8-8H4"></path></svg>
-            Upload Resume
+            <svg style="width:20px;height:20px;vertical-align:-5px;margin-right:8px" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 4v16m8-8H4"></path></svg>
+            Attach Professional Resume
         </label>
-        <input id="resume-upload" type="file" name="resume" accept=".pdf,.doc,.docx" required onchange="document.getElementById('upload-label').innerHTML = '✅ Attached: ' + this.files[0].name;">
-        <span class="file-info">Maximum size 10MB (.pdf, .docx, .doc)</span>
+        <input id="resume-upload" type="file" name="resume" accept=".pdf,.doc,.docx" required onchange="document.getElementById('upload-label').innerHTML = '✅ Resume Attached: ' + this.files[0].name;">
+        <span class="file-info">Supported formats: PDF, DOCX (Max 10MB)</span>
 
-        <button type="submit">Submit Application</button>
+        <button type="submit">Submit Official Application</button>
     </form>
     
     <a href="index.html" class="back-link">← Return to Homepage</a>
@@ -138,8 +166,9 @@
         const formData = new FormData(form);
         const submitBtn = form.querySelector('button[type="submit"]');
 
-        submitBtn.innerHTML = "Submitting...";
+        submitBtn.innerHTML = "Securely Transmitting...";
         submitBtn.style.background = "#eab308";
+        submitBtn.style.boxShadow = "none";
         submitBtn.disabled = true;
 
         fetch("/", {
@@ -150,9 +179,9 @@
             window.location.href = "/thankyou/index.html";
         })
         .catch((error) => {
-            alert("Error submitting application. Please try again.");
-            submitBtn.innerHTML = "Submit Application";
-            submitBtn.style.background = "#10B981";
+            alert("Network error while submitting. Please try uploading again.");
+            submitBtn.innerHTML = "Submit Official Application";
+            submitBtn.style.background = "linear-gradient(135deg, #10B981, #059669)";
             submitBtn.disabled = false;
         });
     });
