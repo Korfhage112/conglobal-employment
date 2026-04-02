@@ -1,135 +1,243 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <title>ConGlobal Employment Portal</title>
-    <style>
-        body {
-            margin: 0;
-            font-family: 'Segoe UI', Arial, sans-serif;
-            background: url('bg.webp.webp') no-repeat center center fixed; /* Fixed image reference */
-            background-size: cover;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            height: 100vh;
-        }
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>ConGlobal Logistics</title>
 
-        .container {
-            width: 400px;
-            background: rgba(0, 0, 0, 0.85); /* Sleek dark card */
-            padding: 30px;
-            border-radius: 10px;
-            box-shadow: 0 10px 25px rgba(0,0,0,0.5);
-        }
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: Arial, sans-serif;
+    }
 
-        .logo {
-            display: block;
-            margin: 0 auto 15px auto;
-            width: 150px;
-        }
+    body {
+      background: #0f172a;
+      color: white;
+    }
 
-        h2 {
-            text-align: center;
-            margin-bottom: 20px;
-            color: #ffffff;
-            font-size: 22px;
-        }
+    /* NAVBAR */
+    .navbar {
+      position: fixed;
+      width: 100%;
+      top: 0;
+      display: flex;
+      justify-content: space-between;
+      padding: 15px 30px;
+      background: rgba(0,0,0,0.7);
+      z-index: 1000;
+    }
 
-        input[type="text"], input[type="email"], select {
-            width: 100%;
-            padding: 12px;
-            margin: 8px 0;
-            border: none;
-            border-radius: 6px;
-            font-size: 14px;
-            box-sizing: border-box;
-        }
+    .navbar a {
+      color: white;
+      text-decoration: none;
+      margin-left: 20px;
+    }
 
-        /* Custom File Upload Button */
-        input[type="file"] {
-            display: none;
-        }
+    /* HERO */
+    .hero {
+      height: 100vh;
+      background: linear-gradient(rgba(0,0,0,0.6), rgba(0,0,0,0.6)),
+      url('https://images.unsplash.com/photo-1586528116311-ad8dd3c8310d');
+      background-size: cover;
+      background-position: center;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      text-align: center;
+      padding: 20px;
+    }
 
-        .file-upload-btn {
-            display: block;
-            width: 100%;
-            background: #10B981; /* Bright green like your screenshot */
-            color: white;
-            text-align: center;
-            padding: 12px;
-            border-radius: 6px;
-            cursor: pointer;
-            font-weight: bold;
-            margin-top: 10px;
-            box-sizing: border-box;
-            transition: 0.3s;
-        }
+    .hero-content {
+      background: rgba(0,0,0,0.6);
+      padding: 40px;
+      border-radius: 10px;
+      max-width: 700px;
 
-        .file-upload-btn:hover {
-            background: #059669;
-        }
+      /* ✅ ANIMATION ALREADY ADDED */
+      animation: fadeUp 1s ease;
+    }
 
-        .file-info {
-            text-align: center;
-            font-size: 12px;
-            color: #bbbbbb;
-            margin-bottom: 15px;
-            display: block;
-            margin-top: 5px;
-        }
+    @keyframes fadeUp {
+      from {
+        opacity: 0;
+        transform: translateY(30px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
 
-        button[type="submit"] {
-            width: 100%;
-            padding: 12px;
-            background: #10B981; /* Green submit button */
-            color: white;
-            border: none;
-            border-radius: 6px;
-            font-size: 16px;
-            font-weight: bold;
-            cursor: pointer;
-            transition: 0.3s;
-        }
+    .hero-content h1 {
+      font-size: clamp(36px, 5vw, 64px);
+      margin-bottom: 20px;
+    }
 
-        button[type="submit"]:hover {
-            background: #059669;
-        }
+    .hero-content p {
+      font-size: clamp(18px, 2vw, 22px);
+      margin-bottom: 25px;
+    }
 
-    </style>
+    .hero-content button {
+      padding: 12px 25px;
+      background: #22c55e;
+      color: white;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+    }
+
+    /* ABOUT */
+    .about {
+      padding: 80px 20px;
+      text-align: center;
+      max-width: 800px;
+      margin: auto;
+    }
+
+    .about h2 {
+      margin-bottom: 20px;
+      font-size: 32px;
+    }
+
+    .about p {
+      font-size: 18px;
+      line-height: 1.6;
+    }
+
+    /* FEATURES */
+    .features {
+      padding: 80px 20px;
+      text-align: center;
+    }
+
+    .feature-box {
+      margin: 20px auto;
+      max-width: 500px;
+      background: rgba(255,255,255,0.05);
+      padding: 20px;
+      border-radius: 10px;
+    }
+
+    /* TESTIMONIALS */
+    .testimonials {
+      padding: 80px 20px;
+      text-align: center;
+      background: #020617;
+    }
+
+    .testimonial {
+      max-width: 600px;
+      margin: 20px auto;
+      background: rgba(255,255,255,0.05);
+      padding: 20px;
+      border-radius: 10px;
+    }
+
+    .testimonial p {
+      font-style: italic;
+    }
+
+    .testimonial h4 {
+      margin-top: 10px;
+      color: #22c55e;
+    }
+
+    /* FOOTER */
+    footer {
+      text-align: center;
+      padding: 20px;
+      background: #000;
+      margin-top: 40px;
+    }
+  </style>
 </head>
+
 <body>
 
-<div class="container">
-    <!-- Logo -->
-    <img src="logo.png.png" alt="Company Logo" class="logo">
+  <!-- NAVBAR -->
+  <div class="navbar">
+    <div><strong>ConGlobal</strong></div>
+    <div>
+      <a href="#about">About</a>
+      <a href="apply.html">Apply</a>
+    </div>
+  </div>
 
-    <h2>Apply for a Position</h2>
+  <!-- HERO -->
+  <section class="hero">
+    <div class="hero-content">
+      <h1>Join ConGlobal Logistics</h1>
+      <p>Modern workforce powering global supply chains</p>
 
-    <form name="employment-application" data-netlify="true" data-netlify-recaptcha="true" action="/thankyou.html" method="POST" enctype="multipart/form-data">
-        <input type="text" name="name" placeholder="Full Name" required>
-        <input type="email" name="email" placeholder="Email Address" required>
-        <input type="text" name="phone" placeholder="(123) 456-7890" required>
+      <a href="apply.html">
+        <button>Apply Now</button>
+      </a>
 
-        <select name="position" required>
-            <option value="">Select Position</option>
-            <option>Equipment Operator</option>
-            <option>Warehouse Worker</option>
-            <option>Truck Driver</option>
-            <option>Logistics Coordinator</option>
-        </select>
+    </div>
+  </section>
 
-        <!-- Custom Upload Button -->
-        <label for="resume-upload" class="file-upload-btn" id="upload-label">+ Add Application (Resume)</label>
-        <input id="resume-upload" type="file" name="resume" accept=".pdf,.doc,.docx" required onchange="document.getElementById('upload-label').innerText = '✅ File Added: ' + this.files[0].name;">
-        <span class="file-info">Accepted formats: PDF, DOC, DOCX</span>
+  <!-- ABOUT -->
+  <section id="about" class="about">
+    <h2>About ConGlobal Logistics</h2>
+    <p>
+      ConGlobal Logistics is a trusted leader in global supply chain and logistics solutions,
+      delivering efficient, secure, and reliable services worldwide.
+      <br><br>
+      We specialize in cargo handling, warehousing, and transportation,
+      ensuring smooth operations across industries.
+      <br><br>
+      Our mission is to connect businesses through innovation and a skilled workforce.
+    </p>
+  </section>
 
-        <!-- Netlify reCAPTCHA -->
-        <div data-netlify-recaptcha="true" style="margin-bottom: 12px; display: flex; justify-content: center;"></div>
+  <!-- FEATURES -->
+  <section class="features">
+    <h2>Why Work With Us</h2>
 
-        <button type="submit">Submit Application</button>
-    </form>
-</div>
+    <div class="feature-box">
+      <h3>🌍 Global Opportunities</h3>
+      <p>Work with international teams and grow your career.</p>
+    </div>
+
+    <div class="feature-box">
+      <h3>💼 Career Growth</h3>
+      <p>We provide training and long-term opportunities.</p>
+    </div>
+
+    <div class="feature-box">
+      <h3>⚡ Modern Workplace</h3>
+      <p>Advanced logistics systems and smooth workflow.</p>
+    </div>
+  </section>
+
+  <!-- TESTIMONIALS -->
+  <section class="testimonials">
+    <h2>What Our Employees Say</h2>
+
+    <div class="testimonial">
+      <p>"Great team and strong support system."</p>
+      <h4>- Michael A.</h4>
+    </div>
+
+    <div class="testimonial">
+      <p>"Professional and growth-focused environment."</p>
+      <h4>- Sarah K.</h4>
+    </div>
+
+    <div class="testimonial">
+      <p>"Efficient operations and great leadership."</p>
+      <h4>- Daniel T.</h4>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer>
+    <p>© 2026 ConGlobal Logistics. All rights reserved.</p>
+  </footer>
 
 </body>
 </html>

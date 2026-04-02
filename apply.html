@@ -1,194 +1,135 @@
 <!DOCTYPE html>
-
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <title>Apply - ConGlobal</title>
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta charset="UTF-8">
+    <title>ConGlobal Employment Portal</title>
+    <style>
+        body {
+            margin: 0;
+            font-family: 'Segoe UI', Arial, sans-serif;
+            background: url('bg.webp.webp') no-repeat center center fixed; /* Fixed image reference */
+            background-size: cover;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+        }
 
-  <style>
-    * {
-      margin: 0;
-      padding: 0;
-      box-sizing: border-box;
-      font-family: Arial, sans-serif;
-    }
+        .container {
+            width: 400px;
+            background: rgba(0, 0, 0, 0.85); /* Sleek dark card */
+            padding: 30px;
+            border-radius: 10px;
+            box-shadow: 0 10px 25px rgba(0,0,0,0.5);
+        }
 
-    body {
-      height: 100vh;
-      background: url('/bg.jpg.webp') no-repeat center center/cover;
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      color: white;
-      position: relative;
-    }
+        .logo {
+            display: block;
+            margin: 0 auto 15px auto;
+            width: 150px;
+        }
 
-    /* DARK OVERLAY */
-    body::before {
-      content: "";
-      position: absolute;
-      width: 100%;
-      height: 100%;
-      background: rgba(0,0,0,0.65);
-      z-index: 0;
-    }
+        h2 {
+            text-align: center;
+            margin-bottom: 20px;
+            color: #ffffff;
+            font-size: 22px;
+        }
 
-    .container {
-      position: relative;
-      z-index: 1;
-      background: rgba(255,255,255,0.1);
-      backdrop-filter: blur(15px);
-      padding: 40px;
-      border-radius: 15px;
-      width: 350px;
-      text-align: center;
-      box-shadow: 0 10px 40px rgba(0,0,0,0.5);
-      animation: fadeIn 1s ease;
-    }
+        input[type="text"], input[type="email"], select {
+            width: 100%;
+            padding: 12px;
+            margin: 8px 0;
+            border: none;
+            border-radius: 6px;
+            font-size: 14px;
+            box-sizing: border-box;
+        }
 
-    @keyframes fadeIn {
-      from { opacity: 0; transform: translateY(20px); }
-      to { opacity: 1; transform: translateY(0); }
-    }
+        /* Custom File Upload Button */
+        input[type="file"] {
+            display: none;
+        }
 
-    .logo {
-      width: 120px;
-      margin-bottom: 15px;
-    }
+        .file-upload-btn {
+            display: block;
+            width: 100%;
+            background: #10B981; /* Bright green like your screenshot */
+            color: white;
+            text-align: center;
+            padding: 12px;
+            border-radius: 6px;
+            cursor: pointer;
+            font-weight: bold;
+            margin-top: 10px;
+            box-sizing: border-box;
+            transition: 0.3s;
+        }
 
-    h2 {
-      margin-bottom: 20px;
-      color: #fff;
-    }
+        .file-upload-btn:hover {
+            background: #059669;
+        }
 
-    input, select {
-      width: 100%;
-      padding: 12px;
-      margin: 10px 0;
-      border-radius: 8px;
-      border: none;
-      outline: none;
-    }
+        .file-info {
+            text-align: center;
+            font-size: 12px;
+            color: #bbbbbb;
+            margin-bottom: 15px;
+            display: block;
+            margin-top: 5px;
+        }
 
-    input[type="file"] {
-      background: white;
-      color: black;
-      padding: 8px;
-    }
+        button[type="submit"] {
+            width: 100%;
+            padding: 12px;
+            background: #10B981; /* Green submit button */
+            color: white;
+            border: none;
+            border-radius: 6px;
+            font-size: 16px;
+            font-weight: bold;
+            cursor: pointer;
+            transition: 0.3s;
+        }
 
-    button {
-      width: 100%;
-      padding: 12px;
-      background: #0a2540;
-      color: white;
-      border: none;
-      border-radius: 8px;
-      margin-top: 15px;
-      cursor: pointer;
-      transition: 0.3s;
-      font-size: 16px;
-    }
+        button[type="submit"]:hover {
+            background: #059669;
+        }
 
-    button:hover {
-      background: #133b63;
-    }
-
-    .spinner {
-      display: none;
-      margin-top: 15px;
-    }
-
-    .spinner div {
-      width: 30px;
-      height: 30px;
-      border: 4px solid #fff;
-      border-top: 4px solid transparent;
-      border-radius: 50%;
-      animation: spin 1s linear infinite;
-      margin: auto;
-    }
-
-    @keyframes spin {
-      to { transform: rotate(360deg); }
-    }
-
-    .success {
-      display: none;
-      margin-top: 15px;
-      color: lightgreen;
-    }
-
-  </style>
-
+    </style>
 </head>
-
 <body>
 
-  <form class="container" id="form" action="/apply" method="POST" enctype="multipart/form-data">
+<div class="container">
+    <!-- Logo -->
+    <img src="logo.png.png" alt="Company Logo" class="logo">
 
-```
-<!-- LOGO -->
-<img src="/logo.png" class="logo" alt="logo">
+    <h2>Apply for a Position</h2>
 
-<h2>Apply for a Position</h2>
+    <form name="employment-application" data-netlify="true" data-netlify-recaptcha="true" action="/thankyou.html" method="POST" enctype="multipart/form-data">
+        <input type="text" name="name" placeholder="Full Name" required>
+        <input type="email" name="email" placeholder="Email Address" required>
+        <input type="text" name="phone" placeholder="(123) 456-7890" required>
 
-<input type="text" name="name" placeholder="Full Name" required>
-<input type="email" name="email" placeholder="Email Address" required>
+        <select name="position" required>
+            <option value="">Select Position</option>
+            <option>Equipment Operator</option>
+            <option>Warehouse Worker</option>
+            <option>Truck Driver</option>
+            <option>Logistics Coordinator</option>
+        </select>
 
-<select name="position" required>
-  <option value="">Select Position</option>
-  <option>Equipment Operator</option>
-  <option>Warehouse Associate</option>
-  <option>Truck Driver</option>
-</select>
+        <!-- Custom Upload Button -->
+        <label for="resume-upload" class="file-upload-btn" id="upload-label">+ Add Application (Resume)</label>
+        <input id="resume-upload" type="file" name="resume" accept=".pdf,.doc,.docx" required onchange="document.getElementById('upload-label').innerText = '✅ File Added: ' + this.files[0].name;">
+        <span class="file-info">Accepted formats: PDF, DOC, DOCX</span>
 
-<input type="file" name="resume" required>
+        <!-- Netlify reCAPTCHA -->
+        <div data-netlify-recaptcha="true" style="margin-bottom: 12px; display: flex; justify-content: center;"></div>
 
-<button type="submit">Submit Application</button>
-
-<!-- LOADING -->
-<div class="spinner" id="spinner">
-  <div></div>
+        <button type="submit">Submit Application</button>
+    </form>
 </div>
-
-<!-- SUCCESS -->
-<div class="success" id="success">
-  ✅ Application submitted successfully!
-</div>
-```
-
-  </form>
-
-  <script>
-    const form = document.getElementById('form');
-    const spinner = document.getElementById('spinner');
-    const success = document.getElementById('success');
-
-    form.addEventListener('submit', async (e) => {
-      e.preventDefault();
-
-      spinner.style.display = 'block';
-      success.style.display = 'none';
-
-      const formData = new FormData(form);
-
-      try {
-        await fetch('/apply', {
-          method: 'POST',
-          body: formData
-        });
-
-        spinner.style.display = 'none';
-        success.style.display = 'block';
-        form.reset();
-
-      } catch (err) {
-        spinner.style.display = 'none';
-        alert('Error submitting application');
-      }
-    });
-  </script>
 
 </body>
 </html>
