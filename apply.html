@@ -2,133 +2,134 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>ConGlobal Employment Portal</title>
+    <title>Application Portal | ConGlobal</title>
     <style>
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap');
+        
         body {
             margin: 0;
-            font-family: 'Segoe UI', Arial, sans-serif;
-            background: url('bg.webp.webp') no-repeat center center fixed; /* Fixed image reference */
+            font-family: 'Inter', sans-serif;
+            background: url('bg.webp.webp') no-repeat center center fixed;
             background-size: cover;
             display: flex;
             justify-content: center;
             align-items: center;
-            height: 100vh;
+            min-height: 100vh;
+            color: white;
+        }
+        body::before {
+            content: ''; position: fixed; inset: 0; background: rgba(15,23,42,0.85); z-index: -1;
         }
 
         .container {
-            width: 400px;
-            background: rgba(0, 0, 0, 0.85); /* Sleek dark card */
-            padding: 30px;
-            border-radius: 10px;
-            box-shadow: 0 10px 25px rgba(0,0,0,0.5);
+            width: 100%; max-width: 450px;
+            background: rgba(30, 41, 59, 0.7);
+            padding: 40px;
+            border-radius: 16px;
+            box-shadow: 0 25px 50px -12px rgba(0,0,0,0.5);
+            border: 1px solid rgba(255,255,255,0.08);
+            backdrop-filter: blur(12px);
         }
 
         .logo {
-            display: block;
-            margin: 0 auto 15px auto;
-            width: 150px;
+            display: block; margin: 0 auto 20px auto; width: 140px;
         }
 
         h2 {
-            text-align: center;
-            margin-bottom: 20px;
-            color: #ffffff;
-            font-size: 22px;
+            text-align: center; margin-bottom: 25px; color: #ffffff;
+            font-size: 26px; font-weight: 700;
         }
 
+        .input-group { margin-bottom: 15px; }
+        
         input[type="text"], input[type="email"], select {
-            width: 100%;
-            padding: 12px;
-            margin: 8px 0;
-            border: none;
-            border-radius: 6px;
-            font-size: 14px;
-            box-sizing: border-box;
+            width: 100%; padding: 14px;
+            background: rgba(15, 23, 42, 0.6);
+            border: 1px solid rgba(255,255,255,0.1);
+            color: white; border-radius: 8px;
+            font-size: 15px; box-sizing: border-box;
+            transition: 0.3s; outline: none;
         }
-
-        /* Custom File Upload Button */
-        input[type="file"] {
-            display: none;
+        input:focus, select:focus {
+            border-color: #10B981; box-shadow: 0 0 0 3px rgba(16,185,129,0.2);
         }
+        select option { background: #1e293b; color: white; }
 
+        input[type="file"] { display: none; }
         .file-upload-btn {
-            display: block;
-            width: 100%;
-            background: #10B981; /* Bright green like your screenshot */
-            color: white;
-            text-align: center;
-            padding: 12px;
-            border-radius: 6px;
-            cursor: pointer;
-            font-weight: bold;
-            margin-top: 10px;
-            box-sizing: border-box;
+            display: block; width: 100%;
+            background: rgba(16, 185, 129, 0.1);
+            color: #10B981; text-align: center;
+            padding: 14px; border-radius: 8px;
+            cursor: pointer; font-weight: 600;
+            margin-top: 5px; border: 1px dashed #10B981;
             transition: 0.3s;
         }
-
-        .file-upload-btn:hover {
-            background: #059669;
-        }
-
+        .file-upload-btn:hover { background: rgba(16, 185, 129, 0.2); }
         .file-info {
-            text-align: center;
-            font-size: 12px;
-            color: #bbbbbb;
-            margin-bottom: 15px;
-            display: block;
-            margin-top: 5px;
+            text-align: center; font-size: 12px; color: #94a3b8;
+            display: block; margin: 8px 0 20px 0;
         }
 
         button[type="submit"] {
-            width: 100%;
-            padding: 12px;
-            background: #10B981; /* Green submit button */
-            color: white;
-            border: none;
-            border-radius: 6px;
-            font-size: 16px;
-            font-weight: bold;
-            cursor: pointer;
-            transition: 0.3s;
+            width: 100%; padding: 16px;
+            background: #10B981; color: white;
+            border: none; border-radius: 8px;
+            font-size: 16px; font-weight: 700;
+            cursor: pointer; transition: 0.3s;
+            box-shadow: 0 10px 20px -5px rgba(16,185,129,0.4);
         }
-
         button[type="submit"]:hover {
-            background: #059669;
+            background: #059669; transform: translateY(-2px);
+            box-shadow: 0 15px 25px -5px rgba(16,185,129,0.5);
         }
-
+        .back-link {
+            display: block; text-align: center; margin-top: 20px;
+            color: #94a3b8; text-decoration: none; font-size: 14px;
+        }
+        .back-link:hover { color: white; }
     </style>
 </head>
 <body>
 
 <div class="container">
-    <!-- Logo -->
-    <img src="logo.png.png" alt="Company Logo" class="logo">
-
-    <h2>Apply for a Position</h2>
+    <img src="logo.png.png" alt="ConGlobal Logo" class="logo" onerror="this.style.display='none';">
+    <h2>Secure Application</h2>
 
     <form name="employment-application" data-netlify="true" data-netlify-recaptcha="true" action="/thankyou.html" method="POST" enctype="multipart/form-data">
-        <input type="text" name="name" placeholder="Full Name" required>
-        <input type="email" name="email" placeholder="Email Address" required>
-        <input type="text" name="phone" placeholder="(123) 456-7890" required>
+        
+        <div class="input-group">
+            <input type="text" name="name" placeholder="Full Legal Name" required>
+        </div>
+        <div class="input-group">
+            <input type="email" name="email" placeholder="Email Address" required>
+        </div>
+        <div class="input-group">
+            <input type="text" name="phone" placeholder="Phone (123-456-7890)" required>
+        </div>
+        <div class="input-group">
+            <select name="position" required>
+                <option value="">-- Select Target Position --</option>
+                <option>Equipment Operator</option>
+                <option>Warehouse Logistics Provider</option>
+                <option>CDL Truck Driver</option>
+                <option>Operations Supervisor</option>
+            </select>
+        </div>
 
-        <select name="position" required>
-            <option value="">Select Position</option>
-            <option>Equipment Operator</option>
-            <option>Warehouse Worker</option>
-            <option>Truck Driver</option>
-            <option>Logistics Coordinator</option>
-        </select>
+        <label for="resume-upload" class="file-upload-btn" id="upload-label">
+            <svg style="width:20px;height:20px;vertical-align:-5px;margin-right:5px" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 4v16m8-8H4"></path></svg>
+            Upload Resume
+        </label>
+        <input id="resume-upload" type="file" name="resume" accept=".pdf,.doc,.docx" required onchange="document.getElementById('upload-label').innerHTML = '✅ Attached: ' + this.files[0].name;">
+        <span class="file-info">Maximum size 10MB (.pdf, .docx, .doc)</span>
 
-        <!-- Custom Upload Button -->
-        <label for="resume-upload" class="file-upload-btn" id="upload-label">+ Add Application (Resume)</label>
-        <input id="resume-upload" type="file" name="resume" accept=".pdf,.doc,.docx" required onchange="document.getElementById('upload-label').innerText = '✅ File Added: ' + this.files[0].name;">
-        <span class="file-info">Accepted formats: PDF, DOC, DOCX</span>
-
-        <!-- Netlify reCAPTCHA -->
-        <div data-netlify-recaptcha="true" style="margin-bottom: 12px; display: flex; justify-content: center;"></div>
+        <div data-netlify-recaptcha="true" style="margin-bottom: 20px; display: flex; justify-content: center;"></div>
 
         <button type="submit">Submit Application</button>
     </form>
+    
+    <a href="index.html" class="back-link">← Return to Homepage</a>
 </div>
 
 </body>

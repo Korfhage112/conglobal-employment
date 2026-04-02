@@ -1,40 +1,70 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
-<title>Thank You</title>
+    <meta charset="UTF-8">
+    <title>Application Submitted | ConGlobal</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap');
+        
+        body {
+            margin: 0; font-family: 'Inter', sans-serif;
+            background: #0f172a; color: white;
+            display: flex; justify-content: center; align-items: center;
+            height: 100vh; text-align: center;
+        }
 
-<style>
-body {
-  background:#0f172a;
-  color:white;
-  text-align:center;
-  display:flex;
-  justify-content:center;
-  align-items:center;
-  height:100vh;
-  font-family:Arial;
-}
-.box {
-  background:rgba(0,0,0,0.7);
-  padding:40px;
-  border-radius:10px;
-}
-a {
-  color:lightgreen;
-}
-</style>
+        .container {
+            width: 100%; max-width: 500px;
+            background: rgba(30, 41, 59, 1);
+            padding: 60px 40px; border-radius: 16px;
+            box-shadow: 0 25px 50px -12px rgba(0,0,0,0.5);
+            border: 1px solid rgba(255,255,255,0.05);
+            animation: fadeIn 0.6s ease-out;
+        }
 
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        /* Animated Checkmark */
+        .check-wrap {
+            width: 80px; height: 80px;
+            background: rgba(16, 185, 129, 0.1); border-radius: 50%;
+            display: flex; justify-content: center; align-items: center;
+            margin: 0 auto 25px auto; border: 2px solid #10B981;
+        }
+        .check-wrap svg {
+            width: 40px; height: 40px; color: #10B981;
+            stroke-dasharray: 100; stroke-dashoffset: 100;
+            animation: drawCheck 1s ease-out forwards 0.3s;
+        }
+        @keyframes drawCheck {
+            to { stroke-dashoffset: 0; }
+        }
+
+        h1 { font-size: 32px; margin-bottom: 15px; color: #f8fafc; }
+        p { font-size: 16px; color: #94a3b8; line-height: 1.6; margin-bottom: 30px; }
+        
+        .btn {
+            display: inline-block; padding: 14px 30px;
+            background: #10B981; color: white; text-decoration: none;
+            border-radius: 8px; font-weight: 600; transition: 0.3s;
+            box-shadow: 0 10px 20px -5px rgba(16,185,129,0.4);
+        }
+        .btn:hover { background: #059669; transform: translateY(-2px); }
+    </style>
 </head>
-
 <body>
 
-<div class="box">
-  <h1>✅ Application Submitted</h1>
-  <p>Thank you for applying to ConGlobal.</p>
-  <p>Our team will review your application.</p>
-
-  <br>
-  <a href="index.html">⬅ Back Home</a>
+<div class="container">
+    <div class="check-wrap">
+        <svg fill="none" stroke="currentColor" stroke-width="3" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7"></path></svg>
+    </div>
+    <h1>Application Received!</h1>
+    <p>Thank you for taking the time to apply. Your secure application and resume have been successfully transmitted to our team. We will be in touch shortly regarding the next steps.</p>
+    
+    <a href="index.html" class="btn">Return to Homepage</a>
 </div>
 
 </body>

@@ -4,239 +4,167 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>ConGlobal Logistics</title>
-
   <style>
+    @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap');
+    
     * {
-      margin: 0;
-      padding: 0;
-      box-sizing: border-box;
-      font-family: Arial, sans-serif;
+      margin: 0; padding: 0; box-sizing: border-box;
+      font-family: 'Inter', sans-serif;
     }
-
     body {
-      background: #0f172a;
-      color: white;
+      background-color: #0f172a;
+      color: #e2e8f0;
+      scroll-behavior: smooth;
     }
-
+    
     /* NAVBAR */
     .navbar {
-      position: fixed;
-      width: 100%;
-      top: 0;
-      display: flex;
-      justify-content: space-between;
-      padding: 15px 30px;
-      background: rgba(0,0,0,0.7);
-      z-index: 1000;
+      position: fixed; width: 100%; top: 0;
+      display: flex; justify-content: space-between; align-items: center;
+      padding: 15px 40px;
+      background: rgba(15, 23, 42, 0.85); backdrop-filter: blur(10px);
+      z-index: 1000; border-bottom: 1px solid rgba(255,255,255,0.05);
     }
-
-    .navbar a {
-      color: white;
-      text-decoration: none;
-      margin-left: 20px;
+    .navbar .brand {
+      display: flex; align-items: center; gap: 15px;
+      font-size: 20px; font-weight: 700; color: white;
     }
+    .navbar img { width: 120px; }
+    .navbar-links a {
+      color: #cbd5e1; text-decoration: none; font-weight: 600;
+      margin-left: 25px; transition: 0.3s;
+    }
+    .navbar-links a:hover { color: #10b981; }
 
     /* HERO */
     .hero {
       height: 100vh;
-      background: linear-gradient(rgba(0,0,0,0.6), rgba(0,0,0,0.6)),
-      url('https://images.unsplash.com/photo-1586528116311-ad8dd3c8310d');
-      background-size: cover;
-      background-position: center;
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      text-align: center;
-      padding: 20px;
+      background: linear-gradient(rgba(15,23,42,0.8), rgba(15,23,42,0.3)), url('bg.webp.webp') center/cover;
+      display: flex; flex-direction: column; justify-content: center; align-items: center; text-align: center;
+    }
+    .hero h1 {
+      font-size: clamp(40px, 6vw, 75px);
+      font-weight: 800; color: white; margin-bottom: 20px;
+      letter-spacing: -1px; text-shadow: 0 4px 20px rgba(0,0,0,0.5);
+    }
+    .hero h1 span { color: #10b981; }
+    .hero p {
+      font-size: clamp(18px, 2vw, 24px);
+      color: #cbd5e1; max-width: 800px;
+      margin-bottom: 40px; line-height: 1.6;
+    }
+    .btn-primary {
+      padding: 16px 36px; border-radius: 8px;
+      background: #10b981; color: white;
+      font-size: 18px; font-weight: 700; text-decoration: none;
+      box-shadow: 0 10px 25px -5px rgba(16, 185, 129, 0.4);
+      transition: all 0.3s; border: 1px solid #10b981;
+    }
+    .btn-primary:hover {
+      background: #059669; transform: translateY(-3px);
+      box-shadow: 0 15px 30px -5px rgba(16, 185, 129, 0.5);
     }
 
-    .hero-content {
-      background: rgba(0,0,0,0.6);
-      padding: 40px;
-      border-radius: 10px;
-      max-width: 700px;
+    /* ABOUT & FEATURES */
+    .section { padding: 100px 20px; text-align: center; }
+    .section h2 { font-size: 38px; color: white; margin-bottom: 20px; }
+    .section p.subtitle { color: #94a3b8; max-width: 700px; margin: 0 auto 50px auto; font-size: 18px; line-height: 1.6; }
 
-      /* ✅ ANIMATION ALREADY ADDED */
-      animation: fadeUp 1s ease;
+    .grid-3 {
+      display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      gap: 30px; max-width: 1200px; margin: 0 auto;
     }
-
-    @keyframes fadeUp {
-      from {
-        opacity: 0;
-        transform: translateY(30px);
-      }
-      to {
-        opacity: 1;
-        transform: translateY(0);
-      }
+    .card {
+      background: rgba(30, 41, 59, 0.7);
+      border: 1px solid rgba(255,255,255,0.05);
+      border-radius: 12px; padding: 40px; text-align: left;
+      transition: 0.3s; backdrop-filter: blur(5px);
     }
-
-    .hero-content h1 {
-      font-size: clamp(36px, 5vw, 64px);
-      margin-bottom: 20px;
-    }
-
-    .hero-content p {
-      font-size: clamp(18px, 2vw, 22px);
-      margin-bottom: 25px;
-    }
-
-    .hero-content button {
-      padding: 12px 25px;
-      background: #22c55e;
-      color: white;
-      border: none;
-      border-radius: 5px;
-      cursor: pointer;
-    }
-
-    /* ABOUT */
-    .about {
-      padding: 80px 20px;
-      text-align: center;
-      max-width: 800px;
-      margin: auto;
-    }
-
-    .about h2 {
-      margin-bottom: 20px;
-      font-size: 32px;
-    }
-
-    .about p {
-      font-size: 18px;
-      line-height: 1.6;
-    }
-
-    /* FEATURES */
-    .features {
-      padding: 80px 20px;
-      text-align: center;
-    }
-
-    .feature-box {
-      margin: 20px auto;
-      max-width: 500px;
-      background: rgba(255,255,255,0.05);
-      padding: 20px;
-      border-radius: 10px;
-    }
+    .card:hover { transform: translateY(-10px); border-color: rgba(16,185,129,0.3); }
+    .card h3 { color: white; margin-bottom: 15px; font-size: 22px; display: flex; align-items: center; gap: 10px; }
+    .card h3::before { content: ""; display: block; width: 30px; height: 3px; background: #10b981; border-radius: 3px; }
+    .card p { color: #cbd5e1; line-height: 1.6; font-size: 16px; }
 
     /* TESTIMONIALS */
-    .testimonials {
-      padding: 80px 20px;
-      text-align: center;
-      background: #020617;
+    .bg-dark { background: #0b1120; }
+    .testimonial-card {
+      background: rgba(255,255,255,0.03); border: 1px solid rgba(255,255,255,0.05);
+      padding: 30px; border-radius: 12px; text-align: left;
     }
+    .testimonial-card p { font-size: 18px; font-style: italic; color: #e2e8f0; margin-bottom: 20px; }
+    .testimonial-card h4 { color: #10b981; font-weight: 700; }
 
-    .testimonial {
-      max-width: 600px;
-      margin: 20px auto;
-      background: rgba(255,255,255,0.05);
-      padding: 20px;
-      border-radius: 10px;
-    }
-
-    .testimonial p {
-      font-style: italic;
-    }
-
-    .testimonial h4 {
-      margin-top: 10px;
-      color: #22c55e;
-    }
-
-    /* FOOTER */
     footer {
-      text-align: center;
-      padding: 20px;
-      background: #000;
-      margin-top: 40px;
+      background: #020617; text-align: center; padding: 30px;
+      color: #64748b; font-size: 14px;
     }
   </style>
 </head>
-
 <body>
 
   <!-- NAVBAR -->
-  <div class="navbar">
-    <div><strong>ConGlobal</strong></div>
-    <div>
-      <a href="#about">About</a>
-      <a href="apply.html">Apply</a>
+  <nav class="navbar">
+    <div class="brand">
+      <img src="logo.png.png" alt="ConGlobal Logo" onerror="this.src=''; this.alt='ConGlobal';">
     </div>
-  </div>
+    <div class="navbar-links">
+      <a href="#about">About</a>
+      <a href="apply.html">Careers</a>
+      <a href="apply.html" class="btn-primary" style="padding: 10px 20px; font-size: 14px; margin-left: 20px; box-shadow: none">Apply Now</a>
+    </div>
+  </nav>
 
   <!-- HERO -->
   <section class="hero">
-    <div class="hero-content">
-      <h1>Join ConGlobal Logistics</h1>
-      <p>Modern workforce powering global supply chains</p>
-
-      <a href="apply.html">
-        <button>Apply Now</button>
-      </a>
-
-    </div>
+    <h1>Powering the Future of <span>Logistics</span></h1>
+    <p>Join a world-class team driving global supply chains. At ConGlobal, we value safety, innovation, and unparalleled professional growth.</p>
+    <a href="apply.html" class="btn-primary">View Open Positions</a>
   </section>
 
   <!-- ABOUT -->
-  <section id="about" class="about">
-    <h2>About ConGlobal Logistics</h2>
-    <p>
-      ConGlobal Logistics is a trusted leader in global supply chain and logistics solutions,
-      delivering efficient, secure, and reliable services worldwide.
-      <br><br>
-      We specialize in cargo handling, warehousing, and transportation,
-      ensuring smooth operations across industries.
-      <br><br>
-      Our mission is to connect businesses through innovation and a skilled workforce.
-    </p>
-  </section>
-
-  <!-- FEATURES -->
-  <section class="features">
-    <h2>Why Work With Us</h2>
-
-    <div class="feature-box">
-      <h3>🌍 Global Opportunities</h3>
-      <p>Work with international teams and grow your career.</p>
-    </div>
-
-    <div class="feature-box">
-      <h3>💼 Career Growth</h3>
-      <p>We provide training and long-term opportunities.</p>
-    </div>
-
-    <div class="feature-box">
-      <h3>⚡ Modern Workplace</h3>
-      <p>Advanced logistics systems and smooth workflow.</p>
+  <section id="about" class="section">
+    <h2>Who We Are</h2>
+    <p class="subtitle">ConGlobal is the trusted leader in global supply chain and logistics solutions, ensuring smooth, secure, and rapid operations worldwide.</p>
+    
+    <div class="grid-3">
+      <div class="card">
+        <h3>Global Opportunities</h3>
+        <p>Work closely with international teams, expanding your expertise and driving impact on a massive global scale.</p>
+      </div>
+      <div class="card">
+        <h3>Career Growth</h3>
+        <p>We provide unparalleled training and long-term upward mobility. When you start here, you grow here.</p>
+      </div>
+      <div class="card">
+        <h3>Modern Workplace</h3>
+        <p>Utilize highly advanced logistics systems in a refined, efficiency-driven work environment focused on safety.</p>
+      </div>
     </div>
   </section>
 
   <!-- TESTIMONIALS -->
-  <section class="testimonials">
-    <h2>What Our Employees Say</h2>
-
-    <div class="testimonial">
-      <p>"Great team and strong support system."</p>
-      <h4>- Michael A.</h4>
-    </div>
-
-    <div class="testimonial">
-      <p>"Professional and growth-focused environment."</p>
-      <h4>- Sarah K.</h4>
-    </div>
-
-    <div class="testimonial">
-      <p>"Efficient operations and great leadership."</p>
-      <h4>- Daniel T.</h4>
+  <section class="section bg-dark">
+    <h2>Why Work With Us</h2>
+    <p class="subtitle">Hear it straight from the brilliant individuals who keep ConGlobal moving forward every day.</p>
+    
+    <div class="grid-3">
+      <div class="testimonial-card">
+        <p>"The support system and leadership here are unbelievable. It's a truly professional environment."</p>
+        <h4>— Michael A., Logistics Director</h4>
+      </div>
+      <div class="testimonial-card">
+        <p>"If you want a modern workplace that actually cares about your professional growth, this is the place."</p>
+        <h4>— Sarah K., Warehouse Operations</h4>
+      </div>
+      <div class="testimonial-card">
+        <p>"Everything operates flawlessly. Great equipment, great technology, and a world-class team."</p>
+        <h4>— Daniel T., Technical Coordinator</h4>
+      </div>
     </div>
   </section>
 
-  <!-- FOOTER -->
   <footer>
-    <p>© 2026 ConGlobal Logistics. All rights reserved.</p>
+    <p>© 2026 ConGlobal Logistics. Dedicated to Excellence.</p>
   </footer>
 
 </body>
