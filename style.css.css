@@ -1,0 +1,57 @@
+body {
+  margin: 0;
+  font-family: Arial, sans-serif;
+
+  /* BACKGROUND IMAGE */
+  background: url("/bg.webp") no-repeat center center/cover;
+  height: 100vh;
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+/* MAIN BOX */
+.box {
+  background: rgba(0, 0, 0, 0.6);
+  padding: 25px;
+  border-radius: 10px;
+  color: white;
+  width: 320px;
+  text-align: center;
+}
+
+/* LOGO */
+.logo {
+  width: 80px;
+  margin-bottom: 10px;
+}
+
+/* INPUT FIELDS */
+input, select {
+  width: 100%;
+  padding: 10px;
+  margin: 8px 0;
+  border-radius: 5px;
+  border: none;
+}
+
+/* BUTTON */
+button {
+  width: 100%;
+  padding: 10px;
+  margin-top: 10px;
+
+  border: none;
+  border-radius: 5px;
+
+  background: navy;
+  color: white;
+  font-weight: bold;
+  cursor: pointer;
+}
+
+/* BUTTON HOVER */
+button:hover {
+  background: darkblue;
+}
