@@ -96,7 +96,8 @@
     <img src="logo.png.png" alt="ConGlobal Logo" class="logo" onerror="this.style.display='none';">
     <h2>Secure Application</h2>
 
-    <form name="employment-application" data-netlify="true" data-netlify-recaptcha="true" action="/thankyou" method="POST" enctype="multipart/form-data">
+    <form name="employment-application" data-netlify="true" action="/thankyou/" method="POST" enctype="multipart/form-data">
+        <input type="hidden" name="form-name" value="employment-application" />
         
         <div class="input-group">
             <input type="text" name="name" placeholder="Full Legal Name" required>
@@ -123,8 +124,6 @@
         </label>
         <input id="resume-upload" type="file" name="resume" accept=".pdf,.doc,.docx" required onchange="document.getElementById('upload-label').innerHTML = '✅ Attached: ' + this.files[0].name;">
         <span class="file-info">Maximum size 10MB (.pdf, .docx, .doc)</span>
-
-        <div data-netlify-recaptcha="true" style="margin-bottom: 20px; display: flex; justify-content: center;"></div>
 
         <button type="submit">Submit Application</button>
     </form>
